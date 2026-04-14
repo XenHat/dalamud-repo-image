@@ -8,11 +8,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Docker Login
+      - name: Login to GitHub Container Registry
         uses: docker/login-action@v4.1.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.HUB_PUSH_TOKEN }}
       - name: Build and push the Docker image
         uses: actions/checkout@v4
         run: |
-          docker login --username xenhat --password-stdin ${{ secrets.GH_PAT }} ghcr.io
           docker build . --file Dockerfile --tag dalamud-repo-image:latest
           docker push ghcr.io/xenhat/dalamud-repo-image:latest

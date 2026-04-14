@@ -16,6 +16,6 @@ jobs:
           password: ${{ secrets.HUB_PUSH_TOKEN }}
       - name: Build and push the Docker image
         uses: actions/checkout@v4
-        run: |
-          docker build . --file Dockerfile --tag dalamud-repo-image:latest \
-          docker push ghcr.io/xenhat/dalamud-repo-image:latest
+      run: |
+        docker build . --file Dockerfile --tag dalamud-repo-image:latest \
+        docker push ghcr.io/xenhat/dalamud-repo-image:latest

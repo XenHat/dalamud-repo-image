@@ -30,4 +30,4 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: true
-           tags: ${{ steps.repo_slug.outputs.result }}:latest
+          tags: ${{ steps.repo_slug.outputs.result }}:latest
